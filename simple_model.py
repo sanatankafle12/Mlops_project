@@ -4,11 +4,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 import pickle
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import os
+
+api_key = os.getenv('COMET_API_KEY')
+project_name = os.getenv('COMET_PROJECT_NAME')
+workspace = os.getenv('COMET_WORKSPACE')
 
 experiment = Experiment(
-    api_key="s9D1PWWDv68Hyt0N4Qkaz3Qtz",
-    project_name="mlops-deploy",
-    workspace="sanatankafle12"
+    api_key=api_key,
+    project_name=project_name,
+    workspace=workspace
 )
 
 iris = datasets.load_iris()
