@@ -68,9 +68,9 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud config set project your-project-id
-          gcloud run deploy your-service-name \
-            --image gcr.io/your-project-id/your-image-name:latest \
+          gcloud config set project sanatan-go
+          gcloud run deploy fastapi-knn-app \
+            --image gcr.io/sanatan-go/iris-classifier:latest \
             --platform managed \
-            --region your-region \
+            --region asia-south1 \
             --allow-unauthenticated
