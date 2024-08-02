@@ -29,9 +29,17 @@ jobs:
         pytest test.py
         
     - name: Build Docker image
+      run: |
+        docker build -t my-app .
+        
+    - name: Run Docker container
       env:
         COMET_API_KEY: ${{ secrets.COMET_API_KEY }}
         COMET_PROJECT_NAME: ${{ secrets.COMET_PROJECT_NAME }}
         COMET_WORKSPACE: ${{ secrets.COMET_WORKSPACE }}
       run: |
-        docker build -t my-app .
+        docker run \
+          -e COMET_API_KEY=$COMET_API_KEY \
+          -e COMET_PROJECT_NAME=$COMET_PROJECT_NAME \
+          -e COMET_WORKSPACE=$COMET_WORKSPACE \
+          my-app
