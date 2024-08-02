@@ -2,6 +2,16 @@ FROM python:3.8
 
 WORKDIR /app
 
+# Accept build arguments
+ARG COMET_API_KEY
+ARG COMET_PROJECT_NAME
+ARG COMET_WORKSPACE
+
+# Set environment variables
+ENV COMET_API_KEY=${COMET_API_KEY}
+ENV COMET_PROJECT_NAME=${COMET_PROJECT_NAME}
+ENV COMET_WORKSPACE=${COMET_WORKSPACE}
+
 # Copy and install dependencies
 COPY requirements.txt .
 RUN pip install -r requirements.txt
